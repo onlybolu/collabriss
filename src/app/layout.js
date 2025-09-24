@@ -12,16 +12,62 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Collabriss",
+  title: {
+    default: "Collabriss",
+    template: `%s | Collabriss`,
+  },
   description: "The all-in-one commerce and business management tool for entrepreneurs. Sell online, manage inventory, and grow your customer base with ease.",
+  keywords: ["small business", "ecommerce", "inventory management", "online store", "business tools", "entrepreneur"],
+  authors: [{ name: 'Collabriss Team', url: 'https://collabriss.com' }], // Replace with your URL
+  creator: 'Collabriss Team',
+  publisher: 'Collabriss',
+  metadataBase: new URL('https://collabriss.com'), // IMPORTANT: Replace with your domain
+  openGraph: {
+    title: 'Collabriss',
+    description: 'The all-in-one commerce and business management tool for entrepreneurs.',
+    url: 'https://collabriss.com', // IMPORTANT: Replace with your domain
+    siteName: 'Collabriss',
+    images: [
+      {
+        url: '/og-image.png', // Create this image and place in /public
+        width: 1200,
+        height: 630,
+        alt: 'Collabriss - Your business toolkit in your pocket.',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Collabriss',
+    description: 'The all-in-one commerce and business management tool for entrepreneurs.',
+    // creator: '@YourTwitterHandle',
+    images: ['/twitter-image.png'], // Create this image and place in /public
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 };
 
 export default function RootLayout({ children }) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Collabriss',
+    url: 'https://collabriss.com', // IMPORTANT: Replace with your domain
+    logo: 'https://collabriss.com/logo.png', // IMPORTANT: Replace with your logo URL
+  };
+
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         {children}
       </body>
     </html>
