@@ -31,7 +31,6 @@ export default function NewsletterPopup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You can add your form submission logic here (e.g., send to an email service)
     console.log('Form submitted with email:', e.target.email.value);
     handleClose();
   };

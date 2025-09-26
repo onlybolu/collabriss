@@ -16,20 +16,20 @@ export const metadata = {
     default: "Collabriss",
     template: `%s | Collabriss`,
   },
-  description: "The all-in-one commerce and business management tool for entrepreneurs. Sell online, manage inventory, and grow your customer base with ease.",
+  description: "The all in one commerce and business management tool for entrepreneurs. Sell online, manage inventory, and grow your customer base with ease.",
   keywords: ["small business", "ecommerce", "inventory management", "online store", "business tools", "entrepreneur"],
-  authors: [{ name: 'Collabriss Team', url: 'https://collabriss.com' }], // Replace with your URL
+  authors: [{ name: 'Inovareun Team', url: 'https://collabriss.com' }], 
   creator: 'Collabriss Team',
   publisher: 'Collabriss',
-  metadataBase: new URL('https://collabriss.com'), // IMPORTANT: Replace with your domain
+  metadataBase: new URL('https://collabriss.com'), 
   openGraph: {
     title: 'Collabriss',
-    description: 'The all-in-one commerce and business management tool for entrepreneurs.',
-    url: 'https://collabriss.com', // IMPORTANT: Replace with your domain
+    description: 'The all in one commerce and business management tool for entrepreneurs.',
+    url: 'https://collabriss.com', 
     siteName: 'Collabriss',
     images: [
       {
-        url: '/og-image.png', // Create this image and place in /public
+        url: '/logo.png', 
         width: 1200,
         height: 630,
         alt: 'Collabriss - Your business toolkit in your pocket.',
@@ -41,9 +41,9 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Collabriss',
-    description: 'The all-in-one commerce and business management tool for entrepreneurs.',
+    description: 'The all in one commerce and business management tool for entrepreneurs.',
     // creator: '@YourTwitterHandle',
-    images: ['/twitter-image.png'], // Create this image and place in /public
+    images: ['/twitter-image.png'], 
   },
   robots: {
     index: true,
@@ -60,8 +60,8 @@ export default function RootLayout({ children }) {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Collabriss',
-    url: 'https://collabriss.com', // IMPORTANT: Replace with your domain
-    logo: 'https://collabriss.com/logo.png', // IMPORTANT: Replace with your logo URL
+    url: 'https://collabriss.com', 
+    logo: 'https://collabriss.com/logo.png', 
   };
 
   return (

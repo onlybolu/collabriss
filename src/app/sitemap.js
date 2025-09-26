@@ -1,14 +1,14 @@
 export default function sitemap() {
-  const baseUrl = 'https://collabriss.com'; // IMPORTANT: Replace with your domain
+  const baseUrl = 'https://collabriss.com'; 
 
-  // Add your static routes here
+  
   const staticRoutes = [
     '/',
     '/#features',
     '/#pricing',
     '/#faq',
-    // '/about', 
-    // '/contact'
+    '/about', 
+    '/contact'
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),

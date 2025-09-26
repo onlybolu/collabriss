@@ -1,12 +1,12 @@
 export default function robots() {
-  const baseUrl = 'https://collabriss.com'; // IMPORTANT: Replace with your domain
+  const baseUrl = 'https://collabriss.com';
 
   return {
     rules: [
       {
         userAgent: '*',
         allow: '/',
-        // disallow: '/private/', // Example for pages you want to hide from search engines
+        // disallow: '/user/', 
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

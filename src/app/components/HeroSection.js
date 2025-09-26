@@ -1,7 +1,14 @@
 'use client';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 export default function HeroSection() {
+
+  const route = useRouter()
+
+  const handleGetStarted = () => {
+    route.push('/signup')
+  }
   return (
     <section id="hero" className="text-center py-20 px-4 sm:px-6 lg:px-8">
       <motion.h1
@@ -22,7 +29,7 @@ export default function HeroSection() {
         The all-in-one commerce and business management tool for entrepreneurs. Sell online, manage inventory, and grow your customer base with ease.
       </motion.p>
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.4 }}>
-        <button className="mt-8 bg-[#2EBF83] text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-green-600 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">Get Started for Free</button>
+        <button className="mt-8 bg-[#2EBF83] text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-green-600 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5" onClick={handleGetStarted}>Get Started for Free</button>
       </motion.div>
     </section>
   );
