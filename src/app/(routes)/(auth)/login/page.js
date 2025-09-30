@@ -62,7 +62,7 @@ export default function LoginPage() {
       {/* Form Section */}
       <div className="w-full md:w-1/2 flex flex-col items-center justify-center px-4 sm:p-8">
         <Link href="/" className="md:hidden" aria-label="Go to homepage">
-          <Image src="/logo.png" alt="Collabriss Logo" width={140} height={35} className="h-9 w-auto" priority />
+          <Image src="/logo.png" alt="Collabriss Logo" width={1000} height={35} className="h-30 w-auto" priority />
         </Link>
         <div className="w-full max-w-md">
           <h1 className="text-2xl font-bold text-slate-900 text-center mb-6">Log in to your account</h1>
