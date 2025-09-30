@@ -12,6 +12,7 @@ import {
   DATABASE_ID,
   PROFILES_COLLECTION_ID,
 } from '@/app/lib/appwrite';
+import Loader from '@/app/components/Loader';
 
 const stepVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -119,16 +120,27 @@ export default function WelcomeSetupPage() {
     }
   };
 
-  const handleFinish = async () => {
+  const handleFinish = async (referralDetails) => {
     setIsLoading(true);
     setError('');
     try {
+      // Generate a URL-friendly slug from the business name
+      const generateSubdomain = (name) => {
+        const baseSlug = name.toLowerCase()
+          .replace(/&/g, 'and')      // Replace & with 'and'
+          .replace(/[^a-z0-9]+/g, '-') // Replace non-alphanumeric with -
+          .replace(/^-+|-+$/g, '');   // Remove leading/trailing hyphens
+        
+        // Add a short random string to ensure uniqueness
+        const randomSuffix = Math.random().toString(36).substring(2, 6);
+        return `${baseSlug}-${randomSuffix}`;
+      };
+
       const user = await account.get();
       const profileData = {
         userId: user.$id,
         email: user.email,
-        phone: answers.phone,
-        referralCode: referralStatus.status === 'valid' ? referralCode : '',
+        subdomain: generateSubdomain(answers.businessName),
         ...answers,
       };
 
@@ -152,8 +164,8 @@ export default function WelcomeSetupPage() {
       });
 
       const query = new URLSearchParams();
-      if (referralStatus.status === 'valid' && referralStatus.details) {
-        query.set('discount', referralStatus.details.discountPercent);
+      if (referralDetails) {
+        query.set('discount', referralDetails.discountPercent);
         query.set('code', referralCode);
       }
 
@@ -174,9 +186,7 @@ export default function WelcomeSetupPage() {
 
   if (authStatus === 'loading') {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-slate-50">
-        <p className="text-slate-600">Verifying your session...</p>
-      </div>
+      <Loader message="Verifying your session..." />
     );
   }
 
@@ -316,7 +326,7 @@ export default function WelcomeSetupPage() {
               </motion.div>
             )}
 
-            {step === 6 && (
+            {step === 5 && (
               <motion.div
                 key="step5"
                 variants={stepVariants}
