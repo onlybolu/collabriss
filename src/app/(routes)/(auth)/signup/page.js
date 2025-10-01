@@ -90,11 +90,7 @@ export default function SignupPage() {
   const handleGoogleLogin = () => {
     if (isLoading || isGoogleLoading) return;
     setIsGoogleLoading(true);
-    account.createOAuth2Session(
-      'google',
-      `${window.location.origin}/welcome/setup`, // Success URL
-      `${window.location.origin}/signup` // Failure URL
-    );
+    account.createOAuth2Session('google');
   };
 
 
